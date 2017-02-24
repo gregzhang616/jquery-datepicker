@@ -320,6 +320,8 @@
   var DAY_DURATION = 86400000;
   // Const DEFAULT_TIME_FORMAT
   var DEFAULT_TIME_FORMAT = 'HH:mm:ss';
+  // Const DEFAULT_TIME_VALUE
+  var DEFAULT_TIME_VALUE = '00:00:00';
   // Const DATE_PANEL_Z_INDEX
   var DATE_PANEL_Z_INDEX = 2008;
   // Const TIME_PANEL_Z_INDEX
@@ -368,6 +370,8 @@
         // init param date and value
         datepicker.date = new Date();
         datepicker.value = '';
+        datepicker.yearLabel = datepicker.date.getFullYear();
+        datepicker.monthLabel = datepicker.date.getMonth();
 
         if (datepicker.readonly) $el.attr('readonly', true);
         if (datepicker.disabled) $el.attr('disabled', true);
@@ -546,6 +550,7 @@
           var format = datepicker.format;
           var $delegateTarget = $(e.delegateTarget);
           var $determineButton = $delegateTarget.find('.gmi-picker-panel__link-btn--determine');
+          var $timeInput;
           var $td = $(this);
           var elValue;
 
@@ -594,6 +599,10 @@
               }
               if (type === 'datetime') {
                 $delegateTarget.find('.gmi-date-picker--input').val(elValue);
+                $timeInput = $delegateTarget.find('.gmi-time-picker--input');
+                if ($timeInput.val() === '' || !$.parseDate($timeInput.val(), DEFAULT_TIME_FORMAT)) {
+                  $timeInput.val(DEFAULT_TIME_VALUE);
+                }
                 $determineButton.removeClass('disabled');
                 return false;
               }
@@ -664,8 +673,8 @@
                   core._hidePickerPanel();
                 } else {
                   $endDateInput.val($.formatDate(datepicker.maxDate));
-                  if ($startTimeInput.val() === '') $startTimeInput.val('00:00:00');
-                  if ($endTimeInput.val() === '') $endTimeInput.val('00:00:00');
+                  if ($startTimeInput.val() === '') $startTimeInput.val(DEFAULT_TIME_VALUE);
+                  if ($endTimeInput.val() === '') $endTimeInput.val(DEFAULT_TIME_VALUE);
                   $determineButton.removeClass('disabled');
                 }
               }
@@ -782,13 +791,13 @@
                 minDateValue = $delegateTarget.find('.gmi-date-picker--input[data-role="range-start"]').val();
                 minTimeValue = $delegateTarget.find('.gmi-time-picker--input[data-role="range-start"]').val();
                 minDate = $.parseDate(minDateValue);
-                minTime = $.parseDate(minTimeValue !== '' ? minTimeValue : '00:00:00', DEFAULT_TIME_FORMAT);
+                minTime = $.parseDate(minTimeValue !== '' ? minTimeValue : DEFAULT_TIME_VALUE, DEFAULT_TIME_FORMAT);
                 minDate.setHours(minTime.getHours(), minTime.getMinutes(), minTime.getSeconds(), 0);
                 minValue = $.formatDate(minDate, datepicker.format);
                 maxDateValue = $delegateTarget.find('.gmi-date-picker--input[data-role="range-end"]').val();
                 maxTimeValue = $delegateTarget.find('.gmi-time-picker--input[data-role="range-end"]').val();
                 maxDate = $.parseDate(maxDateValue);
-                maxTime = $.parseDate(maxTimeValue !== '' ? maxTimeValue : '00:00:00', DEFAULT_TIME_FORMAT);
+                maxTime = $.parseDate(maxTimeValue !== '' ? maxTimeValue : DEFAULT_TIME_VALUE, DEFAULT_TIME_FORMAT);
                 maxDate.setHours(maxTime.getHours(), maxTime.getMinutes(), maxTime.getSeconds(), 0);
                 maxValue = $.formatDate(maxDate, datepicker.format);
                 value = minValue + ' '+ datepicker.rangeSeparator +' ' + maxValue;

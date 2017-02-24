@@ -57,7 +57,7 @@ Javascript file
 | align | String | 'left' | 'left'/'center'/'right' | the pick panel's alignment |
 | startDate | Date | null | -- | If the start date exists, the date before the start date is disabled  |
 | endDate | Date | null | -- | If the end date exists, the date after the end date is disabled |
-| lang | String | 'en-US' | 'en-US'/'zh-CN' | language of the datepicker |
+| lang | String | 'en-US' | 'en-US'/'zh-CN'/'vi' | language of the datepicker |
 | rangeSeparator | String | '-' | -- | if type is 'date-range' or 'datetime-range', use rangeSeparator to separate the date |
 | defaultValue | String/Date | '' | -- | default date, if picker type is date-range or datetime-range, parameter's type must be String |
 
@@ -214,7 +214,7 @@ $().datepicker({
 
 + npm install
 + gulp
-+ Access http://localhost:8081 in browser
++ Access http://localhost:8081/examples/index.html in browser
 
 
 ### Browser support

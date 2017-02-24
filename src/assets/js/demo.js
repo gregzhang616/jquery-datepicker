@@ -1,108 +1,80 @@
 /**
  * Created by Greg Zhang.
  */
-(function ($, type) {
+(function ($) {
+  var $tplEle;
   var $datepicker;
   var datepicker;
+  var compileData = {
+    title: 'Date',
+    description: 'Basic date picker measured by "date".',
+    format: '',
+    align: ''
+  };
 
-  // init datepicker plugin
-  switch (type) {
-    case 'date':
-      $datepicker = $('#gmi-datepicker-date--input').datepicker({
-        startDate: new Date(2016, 11, 16),
-        endDate: new Date(2017, 2, 15),
-        onChange: function (newValue) {
-          $('.callback-content[data-role=change]').text(newValue);
-          $('.events-content[data-role=pick]').text(newValue);
-          $('.gmi-datepicker-button--input').val(newValue);
-        }
-      });
-      break;
-    case 'datetime':
-      $datepicker = $('#gmi-datepicker-datetime--input').datepicker({
-        type: 'datetime',
-        format: 'MM/dd/yyyy HH:mm:ss',
-        startDate: new Date(2016, 11, 16),
-        endDate: new Date(2017, 2, 15),
-        defaultValue: '02/26/2017 08:26:32',
-        align: 'right',
-        onChange: function (newValue) {
-          $('.callback-content[data-role=change]').text(newValue);
-          $('.events-content[data-role=pick]').text(newValue);
-          $('.gmi-datepicker-button--input').val(newValue);
-        }
-      });
-      break;
-    case 'month':
-      $datepicker = $('#gmi-datepicker-month--input').datepicker({
-        type: 'month',
-        format: 'MM/yyyy',
-        startDate: new Date(2016, 11, 16),
-        endDate: new Date(2017, 2, 15),
-        defaultValue: new Date(2017, 0, 15),
-        placeholder: 'Please pick a month',
-        onChange: function (newValue) {
-          $('.callback-content[data-role=change]').text(newValue);
-          $('.events-content[data-role=pick]').text(newValue);
-          $('.gmi-datepicker-button--input').val(newValue);
-        }
-      });
-      break;
-    case 'year':
-      $datepicker = $('#gmi-datepicker-year--input').datepicker({
-        type: 'year',
-        startDate: new Date(2009, 11, 16),
-        endDate: new Date(2017, 2, 15),
-        defaultValue: '2016',
-        placeholder: 'Please pick a year',
-        onChange: function (newValue) {
-          $('.callback-content[data-role=change]').text(newValue);
-          $('.events-content[data-role=pick]').text(newValue);
-          $('.gmi-datepicker-button--input').val(newValue);
-        }
-      });
-      break;
-    case 'date-range':
-      $datepicker = $('#gmi-datepicker-date-range--input').datepicker({
-        type: 'date-range',
-        startDate: new Date(2016, 11, 16),
-        endDate: new Date(2017, 2, 15),
-        defaultValue: '2016-12-26 - 2017-02-09',
-        placeholder: 'Please pick a range date',
-        onChange: function (newValue) {
-          $('.callback-content[data-role=change]').text(newValue);
-          $('.events-content[data-role=pick]').text(newValue);
-          $('.gmi-datepicker-button--input').val(newValue);
-        }
-      });
-      break;
-    case 'datetime-range':
-      $datepicker = $('#gmi-datepicker-datetime-range--input').datepicker({
-        type: 'datetime-range',
-        format: 'dd/MM/yyyy-HH:mm:ss',
-        startDate: new Date(2016, 11, 16),
-        endDate: new Date(2017, 2, 15),
-        defaultValue: '26/12/2016-12:22:08 - 09/02/2017-20:08:06',
-        placeholder: 'Please pick a range datetime',
-        align: 'center',
-        onChange: function (newValue) {
-          $('.callback-content[data-role=change]').text(newValue);
-          $('.events-content[data-role=pick]').text(newValue);
-          $('.gmi-datepicker-button--input').val(newValue);
-        }
-      });
-      break;
-    default:
-      break;
-  }
-  datepicker = $datepicker.data('datepicker');
-  // show format attribute
-  $('.attr-content[data-role=format]').text(datepicker.format);
-  // show align attribute
-  $('.attr-content[data-role=align]').text(datepicker.align);
+  $('ul.datepicker-demo-guide__list').find('>li a').on('click', function() {
+    var $a = $(this);
+    var $indexContainer = $('.datepicker-index-container');
+    var $insContainer = $('.datepicker-demo__main');
+    var type = $a.data('role');
+    var tpl;
+    switch (type) {
+      case 'datetime':
+        compileData.title = 'Datetime';
+        compileData.description = 'Basic date picker measured by "datetime".';
+        compileData.format = 'MM/dd/yyyy HH:mm:ss';
+        compileData.align = 'right';
+        break;
+      case 'year':
+        compileData.title = 'Year';
+        compileData.description = 'Basic date picker measured by "year".';
+        compileData.format = 'yyyy';
+        break;
+      case 'month':
+        compileData.title = 'Month';
+        compileData.description = 'Basic date picker measured by "month".';
+        compileData.format = 'MM/yyyy';
+        break;
+      case 'date-range':
+        compileData.title = 'Range date';
+        compileData.description = 'Basic date picker measured by "range date".';
+        break;
+      case 'datetime-range':
+        compileData.title = 'Range datetime';
+        compileData.description = 'Basic date picker measured by "range datetime".';
+        compileData.format = 'dd/MM/yyyy-HH:mm:ss';
+        compileData.align = 'center';
+        break;
+      default:
+        break;
+    }
+    tpl = Handlebars.compile($('#tpl-datepicker').html())(compileData);
+    if ($tplEle && $tplEle.length > 0) $tplEle.remove();
+    $tplEle = $(tpl).appendTo($insContainer);
+    $indexContainer.hide();
+    // init datepicker
+    $datepicker = $('#gmi-datepicker--input').datepicker({
+      type: type,
+      format: compileData.format,
+      align: compileData.align !== '' ? compileData.align : 'left',
+      startDate: new Date(2016, 11, 16),
+      endDate: new Date(2017, 2, 15),
+      onChange: function (newValue) {
+        $('.callback-content[data-role=change]').text(newValue);
+        $('.events-content[data-role=pick]').text(newValue);
+        $('.gmi-datepicker-button--input').val(newValue);
+      }
+    });
 
-  // bind events
-  _bindEvent();
+    datepicker = $datepicker.data('datepicker');
+    // show format attribute
+    $('.attr-content[data-role=format]').text(compileData.format !== '' ? compileData.format : datepicker.format);
+    // show align attribute
+    $('.attr-content[data-role=align]').text(datepicker.align !== '' ? datepicker.align : datepicker.align);
+
+    // bind events
+    _bindEvent();
+  });
 
   function _bindEvent () {
     // bind show event
@@ -158,4 +130,4 @@
       e.stopPropagation();
     });
   }
-})(jQuery, currentType);
+})(jQuery);
