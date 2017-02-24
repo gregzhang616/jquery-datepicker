@@ -1,0 +1,228 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+/* Guideline page */
+.datepicker-demo-guide__list {
+  font-size: 14px;
+}
+
+.datepicker-demo-guide__list a {
+  color: #038cd6;
+}
+/* Guideline page */
+
+.datepicker-demo__header {
+  width: 100%;
+  height: 90px;
+  margin-bottom: -90px;
+  background-color: #038cd6;
+}
+
+.datepicker-demo__main {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 130px;
+}
+
+.datepicker-demo__main__container {
+  min-height: 580px;
+  padding: 20px 30px;
+  border: 1px solid #eaeefb;
+  border-radius: 2px;
+  transition: all .3s;
+  margin-bottom: 20px;
+  overflow: hidden;
+  clear: both;
+}
+
+.datepicker-demo__main__container:hover {
+  box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
+}
+
+.datepicker-demo__main__container .gmi-input {
+  width: 200px;
+  height: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 2px;
+  border: 1px solid #bfcbd9;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1f2d3d;
+  line-height: 1;
+  outline: none;
+  padding: 3px 10px;
+  font-size: 13px;
+}
+
+.datepicker-demo-button-area {
+  width: 33.33%;
+  height: 360px;
+  float: right;
+  text-align: center;
+}
+
+.datepicker-demo-example-area {
+  width: 33.33%;
+  height: 360px;
+  float: left;
+  text-align: center;
+}
+
+.datepicker-demo-events-area {
+  width: 33.33%;
+  height: 360px;
+  float: right;
+  text-align: center;
+}
+
+.gmi-button.primary {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px;
+  height: 32px;
+  line-height: 22px;
+  padding: 5px 10px;
+  text-align: center;
+  background-color: #038cd6;
+  border-radius: 2px;
+  color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.gmi-button.primary:active {
+  background-color: #037ec1;
+}
+
+.datepicker-demo__header .container{
+  height: 100%;
+  overflow: hidden;
+}
+
+.datepicker-demo__header img, .datepicker-demo__header h3 {
+  float: left;
+}
+
+.datepicker-demo__header img {
+  margin-top: 17px;
+  margin-right: 8px;
+}
+
+.datepicker-demo__header h3 {
+  color: #fff;
+  margin-top: 33px;
+}
+
+.events-content {
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.callback-content {
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.datepicker-demo__footer {
+  height: 80px;
+  background-color: #324057;
+  font-size: 24px;
+  width: 100%;
+  margin-top: -80px;
+}
+
+.datepicker-demo__footer .container {
+  height: 100%;
+  line-height: 1;
+  color: #a4aebd;
+}
+
+.datepicker-demo__footer__inner {
+  height: 100%;
+}
+
+.datepicker-demo__footer__inner > li {
+  padding-top: 20px;
+  float: left;
+}
+
+.datepicker-demo__footer__inner > li:last-child {
+  float: right;
+}
+
+.footer-title {
+  padding-left: 32px;
+  background: url("/assets/images/gemini-dark.png") no-repeat left center transparent;
+  -webkit-background-size: 26px 28px;
+  background-size: 26px 28px;
+}
+
+.footer-title--feedback {
+  padding-left: 32px;
+  font-size: 14px;
+  color: #a4aebd;
+}
+
+.footer-title--feedback:hover {
+    text-decoration: none;
+}
+
+.footer-github-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("/assets/images/github-dark.png") no-repeat center center transparent;
+  background-size: 100% 100%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.footer-github-icon:hover {
+  background-image: url("/assets/images/github-white.png");
+  transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+}
+
+.container {
+  width: 1170px;
+  margin: 0 auto;
+  color: #5e5e5e;
+}
+
+.padding-t-huge {
+  padding-top: 140px;
+}
+
+.padding-t-lg {
+  padding-top: 50px;
+}
+
+.margin-b-md {
+  margin-bottom: 15px;
+}
+
+.margin-b-sm {
+  margin-bottom: 10px;
+}
+
+.margin-t-lg {
+  margin-top: 30px;
+}

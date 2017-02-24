@@ -1,0 +1,248 @@
+<h2 id="gemini-datepicker">Gemini DatePicker</h2>
+<blockquote>
+<p>A full-featured datepicker jquery plugin.</p>
+</blockquote>
+<h3 id="features">Features</h3>
+<ul>
+<li>Supports more configurable options.</li>
+<li>Supports more methods</li>
+<li>Supports more events</li>
+<li>Supports datetime mode</li>
+<li>Supports range date and range datetime mode</li>
+<li>Supports internationalization</li>
+<li>Cross-browser support</li>
+</ul>
+<h3 id="getting-started">Getting started</h3>
+<h4 id="quick-start">Quick start</h4>
+<ul>
+<li>Clone the repository: git clone <a href="https://github.com/fengyuanchen/datepicker.git">https://github.com/fengyuanchen/datepicker.git</a>.</li>
+<li>Install with Npm: npm install gemini-datepicker.</li>
+<li>Install with Bower: bower install gemini-datepicker.</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<h5 id="include-files-">Include files:</h5>
+<p>Css file</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/css/iconfont.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/jquery.datepicker.min.css&quot;&gt;
+</code></pre><p>Javascript file</p>
+<pre><code>&lt;script src=&quot;/assets/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/js/jquery.datepicker.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/i18n/datepicker.en-US.js&quot;&gt;&lt;/script&gt;
+</code></pre><h3 id="attributes">Attributes</h3>
+<blockquote>
+<p>You may set datepicker options with $().datepicker(options), the options type is Object.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Default value</th>
+<th style="text-align:left">Optional value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;date&#39;</td>
+<td style="text-align:left">year/month/date/datetime/datetime-range/date-range</td>
+<td style="text-align:left">type of the picker</td>
+</tr>
+<tr>
+<td style="text-align:left">readonly</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">false/ true</td>
+<td style="text-align:left">whether DatePicker is read only</td>
+</tr>
+<tr>
+<td style="text-align:left">disabled</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">false/ true</td>
+<td style="text-align:left">whether DatePicker is disabled</td>
+</tr>
+<tr>
+<td style="text-align:left">format</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;yyyy-MM-dd&#39;</td>
+<td style="text-align:left">year-&gt;yyyy, month-&gt;MM, day-&gt;dd, hour-&gt;HH, minute-&gt;mm, second-&gt;ss</td>
+<td style="text-align:left">format of the picker</td>
+</tr>
+<tr>
+<td style="text-align:left">placeholder</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;Please pick a day&#39;</td>
+<td style="text-align:left">--</td>
+<td style="text-align:left">init input element&#39;s placeholder</td>
+</tr>
+<tr>
+<td style="text-align:left">align</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;left&#39;</td>
+<td style="text-align:left">&#39;left&#39;/&#39;center&#39;/&#39;right&#39;</td>
+<td style="text-align:left">the pick panel&#39;s alignment</td>
+</tr>
+<tr>
+<td style="text-align:left">startDate</td>
+<td style="text-align:left">Date</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">--</td>
+<td style="text-align:left">If the start date exists, the date before the start date is disabled</td>
+</tr>
+<tr>
+<td style="text-align:left">endDate</td>
+<td style="text-align:left">Date</td>
+<td style="text-align:left">null</td>
+<td style="text-align:left">--</td>
+<td style="text-align:left">If the end date exists, the date after the end date is disabled</td>
+</tr>
+<tr>
+<td style="text-align:left">lang</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;en-US&#39;</td>
+<td style="text-align:left">&#39;en-US&#39;/&#39;zh-CN&#39;</td>
+<td style="text-align:left">language of the datepicker</td>
+</tr>
+<tr>
+<td style="text-align:left">rangeSeparator</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">&#39;-&#39;</td>
+<td style="text-align:left">--</td>
+<td style="text-align:left">if type is &#39;date-range&#39; or &#39;datetime-range&#39;, use rangeSeparator to separate the date</td>
+</tr>
+<tr>
+<td style="text-align:left">defaultValue</td>
+<td style="text-align:left">String/Date</td>
+<td style="text-align:left">&#39;&#39;</td>
+<td style="text-align:left">--</td>
+<td style="text-align:left">default date, if picker type is date-range or datetime-range, parameter&#39;s type must be String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<blockquote>
+<p>Common usage</p>
+</blockquote>
+<pre><code>$().datepicker(methodName, argument1, argument2, ..., argumentN);
+</code></pre><h5 id="setdate-date-">setDate(date)</h5>
+<p>Set the current date with a new date, parameter date type is String or Date .</p>
+<pre><code>$().datepicker(&#39;setDate&#39;, &#39;2016-02-09&#39;);
+$().datepicker(&#39;setDate&#39;, new Date(2016, 1, 9));
+</code></pre><h5 id="getdate-">getDate()</h5>
+<p>Get the current date.</p>
+<pre><code>$().datepicker(&#39;getDate&#39;);
+</code></pre><h5 id="clear-">clear()</h5>
+<p>Clear the picker date (when date is cleared, the current date is displayed by default).</p>
+<pre><code>$().datepicker(&#39;clear&#39;);
+</code></pre><h5 id="show-">show()</h5>
+<p>Show the picker panel.</p>
+<pre><code>$().datepicker(&#39;show&#39;);
+</code></pre><h5 id="hide-">hide()</h5>
+<p>hide the picker panel.</p>
+<pre><code>$().datepicker(&#39;hide&#39;);
+</code></pre><h5 id="disable-value-">disable(value)</h5>
+<p>disable or enable the picker, if parameter value is true that can disable the picker, otherwise can enable the picker.</p>
+<pre><code>// disable the picker
+$().datepicker(&#39;disable&#39;, true);
+// enable the picker
+$().datepicker(&#39;disable&#39;, false);
+</code></pre><h5 id="destroy-">destroy()</h5>
+<p>Destroy the picker and remove the instance from target element.</p>
+<pre><code>$().datepicker(&#39;destroy&#39;);
+</code></pre><h3 id="events">Events</h3>
+<blockquote>
+<p>Common usage</p>
+</blockquote>
+<pre><code>$().on(eventName, function (e, arguments) {
+  // todo
+});
+</code></pre><h5 id="pick-datepicker">pick.datepicker</h5>
+<p>This event fires when date is changed.</p>
+<ul>
+<li>params ( Type: Object )<ul>
+<li>newDate ( Type: String )</li>
+<li>oldDate ( Type: String )</li>
+</ul>
+</li>
+</ul>
+<pre><code>$().on(&#39;pick.datepicker&#39;, function (e, params) {
+  console.log(&#39;newDate: &#39; + params.newDate);
+  console.log(&#39;oldDate: &#39; + params.oldDate);
+});
+</code></pre><h5 id="show-datepicker">show.datepicker</h5>
+<p>This event fires when picker is show.</p>
+<pre><code>$().on(&#39;show.datepicker&#39;, function (e) {
+  // todo
+});
+</code></pre><h5 id="hide-datepicker">hide.datepicker</h5>
+<p>This event fires when picker is hide.</p>
+<pre><code>$().on(&#39;hide.datepicker&#39;, function (e) {
+  // todo
+});
+</code></pre><h3 id="callbacks">Callbacks</h3>
+<blockquote>
+<p>Common usage</p>
+</blockquote>
+<pre><code>$().datepicker({
+    CallbackName: function () {
+      // todo
+    }
+});
+</code></pre><h5 id="onchange">onChange</h5>
+<p>This callback called when picker value is changed.</p>
+<pre><code>$().datepicker({
+    onChange: function (newDate, oldDate) {
+      // todo
+    }
+});
+</code></pre><h5 id="onshow">onShow</h5>
+<p>This callback called when picker is show.</p>
+<pre><code>$().datepicker({
+    onShow: function () {
+      // todo
+    }
+});
+</code></pre><h5 id="onhide">onHide</h5>
+<p>This callback called when picker is hide.</p>
+<pre><code>$().datepicker({
+    onHide: function () {
+      // todo
+    }
+});
+</code></pre><h3 id="locale">Locale</h3>
+<blockquote>
+<p>I18n config, default language is en-US</p>
+</blockquote>
+<h5 id="usage">Usage</h5>
+<pre><code>&lt;script src=&quot;/js/jquery.datepicker.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/i18n/datepicker.zh-CN.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  $().datepicker({
+    lang: &#39;zh-CN&#39;
+  });
+&lt;/script&gt;
+</code></pre><h3 id="run-example">Run example</h3>
+<blockquote>
+<p>Please download the project, and then enter into this directory.(download gulp-sass plugin need to connect vpn)</p>
+</blockquote>
+<ul>
+<li>npm install</li>
+<li>gulp</li>
+<li>Access <a href="http://localhost:8081">http://localhost:8081</a> in browser</li>
+</ul>
+<h3 id="browser-support">Browser support</h3>
+<ul>
+<li>Chrome Most versions</li>
+<li>Firefox Most versions</li>
+<li>Safari Most versions</li>
+<li>Opera Most versions</li>
+<li>Edge Most versions</li>
+<li>Internet Explorer 8+</li>
+</ul>
+<h3 id="author">Author</h3>
+<p>Greg Zhang from Asiainfo (gregzhang616@gmail.com).</p>
+<h3 id="remarks">Remarks</h3>
+<p>Thanks for the eleme UED team to provide such a good UI design.</p>

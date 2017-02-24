@@ -1,0 +1,169 @@
+$primaryColor: #038cd6;
+$defaultColor: #8391a5;
+
+.gmi-date-picker {
+  width: 254px;
+  transition: all ease-in-out 0.2s;
+  opacity: 0;
+  transform: scale(0, 0);
+
+  @at-root &.has-time {
+    width: 324px;
+  }
+
+  &__header__icon-btn {
+    font-weight: 500;
+    float: right;
+    cursor: pointer;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+
+  &[data-role='year'] {
+    .gmi-date-picker__header__label--year:hover {
+      color: #475669!important;
+      cursor: default;
+    }
+  }
+}
+
+.gmi-picker-panel {
+  line-height: 20px;
+  color: #475669;
+  background-color: #fff;
+  border: 1px solid #d3dce6;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 5px 0;
+  z-index: 2008;
+
+  a {
+    color: #475669;
+    font-size: 14px;
+    padding: 0 3px;
+
+    &:hover {
+      color: $primaryColor;
+      text-decoration: none;
+    }
+  }
+
+  &__body {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body__header {
+    height: 22px;
+    line-height: 22px;
+    padding: 12px 20px 5px;
+  }
+
+  .gmi-year-picker__header, .gmi-month-picker__header {
+    padding-bottom: 10px;
+  }
+
+  &__body__header--time {
+    padding: 8px;
+    border-bottom: 1px solid #d3dce6;
+    min-height: 30px;
+
+    &__wrapper {
+      width: 50%;
+      float: left;
+      padding: 0 5px;
+      box-sizing: border-box;
+
+      .gmi-input {
+        width: 100%;
+        display: inline-block;
+
+        &__inner {
+          width: 100%;
+          height: 30px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          border-radius: 2px;
+          border: 1px solid #bfcbd9;
+          box-sizing: border-box;
+          color: #1f2d3d;
+          display: block;
+          line-height: 1;
+          outline: none;
+          padding: 3px 10px;
+          font-size: 13px;
+          transition: border-color .4s cubic-bezier(.645,.045,.355,1);
+
+          &:hover {
+            border: 1px solid $primaryColor;
+          }
+        }
+      }
+
+      .gmi-time-picker--wrapper {
+        position: relative;
+        zoom: 1;
+      }
+    }
+  }
+
+  &__btn--next {
+    margin-left: 15px;
+  }
+
+  &__body__main {
+    min-width: 224px;
+    padding: 0 15px 15px;
+  }
+
+  // 导入基础日历表格样式
+  @import "datepicker-table";
+
+  &__footer {
+    padding: 0 8px;
+    border-top: 1px solid #d3dce6;
+    text-align: right;
+    background-color: #fff;
+
+    .gmi-picker-panel__link-btn {
+      display: inline-block;
+      color: $primaryColor;
+      padding: 10px 5px;
+
+      &--default {
+        color: $defaultColor;
+      }
+
+      &--primary {
+        color: $primaryColor;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.disabled {
+        color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// 导入双日历样式
+@import "datepicker-range";
+
+// 导入时间选择器样式
+@import "timepicker";
+
+.picker-show {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.picker-hide {
+  opacity: 0;
+  transform: scale(0, 0);
+}

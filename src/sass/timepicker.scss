@@ -1,0 +1,111 @@
+.gmi-time-panel {
+  margin: 5px 0;
+  color: #475669;
+  background-color: #fff;
+  border: 1px solid #d1dbe5;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 0 6px rgba(0,0,0,.04);
+  border-radius: 2px;
+  transform-origin: center top 0;
+  z-index: 2011;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &__body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+      content: ":";
+      padding-left: 33.33333%;
+      top: 50%;
+      color: #fff;
+      position: absolute;
+      font-size: 14px;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      line-height: 16px;
+      background-color: lighten($primaryColor, 5%);
+      height: 32px;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      padding-top: 6px;
+      text-align: left;
+    }
+
+    &:after {
+      content: ":";
+      top: 50%;
+      color: #fff;
+      position: absolute;
+      font-size: 14px;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      line-height: 16px;
+      background-color: lighten($primaryColor, 5%);
+      height: 32px;
+      left: 66.66667%;
+      right: 0;
+      box-sizing: border-box;
+      padding-top: 6px;
+      text-align: left
+    }
+
+    &__item {
+      width: 33.33%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      float: left;
+      text-align: center;
+
+      &--spinner {
+        width: 100%;
+        max-height: 192px;
+
+        &:before {
+          content: " ";
+          display: block;
+          width: 100%;
+          height: 80px;
+        }
+
+        &:after {
+          content: " ";
+          display: block;
+          width: 100%;
+          height: 80px;
+        }
+
+        &__item {
+          height: 32px;
+          line-height: 32px;
+          font-size: 12px;
+          cursor: pointer;
+
+          &.active {
+            color: #fff;
+
+            &:hover {
+              cursor: default;
+            }
+          }
+
+          &.disabled {
+            color: #cecece;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}

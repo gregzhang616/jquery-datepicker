@@ -1,0 +1,76 @@
+.gmi-date-range-picker {
+  width: 520px;
+  transition: all ease-in-out 0.2s;
+  opacity: 0;
+  transform: scale(0, 0);
+
+  @at-root &.has-time {
+    width: 660px;
+  }
+
+  &__body {
+    clear: both;
+    overflow: hidden;
+
+    &__header {
+      font-size: 14px;
+      text-align: center;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    .gmi-picker-panel__body__main {
+      width: 50%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 15px;
+    }
+  }
+
+  &__header--time__wrapper {
+    .gmi-input {
+      float: left;
+      width: 50%;
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+  }
+
+  &__header__icon-btn {
+    color: #97a8be;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    font-size: 14px!important;
+    font-weight: 600;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+
+  &__btn--prev {
+    left: 5px;
+    &-month {
+      left: 25px;
+    }
+  }
+
+  &__btn--next {
+    right: 5px;
+
+    &-month {
+      right: 25px;
+    }
+  }
+
+  .f-lt {
+    float: left;
+    border-right: 1px solid #d3dce6;
+  }
+
+  .f-rt {
+    float: right;
+  }
+
+}
