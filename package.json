@@ -12,9 +12,7 @@
     "jquery",
     "jquery-datepicker",
     "plugin",
-    "javascript",
-    "html",
-    "css"
+    "javascript"
   ],
   "author": "Greg Zhang",
   "license": "MIT",
