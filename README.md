@@ -26,7 +26,7 @@
 
 ### Getting started
 #### Quick start
-+ Clone the repository: git clone https://github.com/fengyuanchen/datepicker.git.
++ Clone the repository: git clone https://github.com/gregzhang616/jquery-datepicker.git.
 + Install with Npm: npm install gemini-datepicker.
 + Install with Bower: bower install gemini-datepicker.
 
