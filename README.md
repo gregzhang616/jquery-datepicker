@@ -1,4 +1,4 @@
-## ![Date Image](./dist/assets/images/github-dark.png) Gemini DatePicker
+## ![Date Image](./dist/assets/images/github-gemini.png) Gemini DatePicker
 > A full-featured datepicker jquery plugin.
 
 ### Features
