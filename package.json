@@ -2,7 +2,7 @@
   "name": "gemini-datepicker",
   "version": "1.0.0",
   "description": "A full-featured datepicker jquery plugin.",
-  "homepage": "https://github.com/GregZhang8/gemini-datepicker",
+  "homepage": "https://github.com/gregzhang616/jquery-datepicker.git",
   "main": "dist/js/jquery.datepicker.js",
   "keywords": [
     "date",
@@ -17,7 +17,7 @@
     "css"
   ],
   "author": "Greg Zhang",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
