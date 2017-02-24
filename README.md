@@ -214,7 +214,7 @@ $().datepicker({
 
 + npm install
 + gulp
-+ Access http://localhost:8081/examples/index.html in browser
++ Access "http://localhost:8081/examples/index.html" in browser
 
 
 ### Browser support
