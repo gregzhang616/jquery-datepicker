@@ -20,9 +20,9 @@
 ##### Type: datetime
 ![Datetime Image](./dist/assets/images/datepicker-datetime.png)
 ##### Type: date-range
-![Datetime Image](./dist/assets/images/datepicker-date-range.png)
+![Date range Image](./dist/assets/images/datepicker-date-range.png)
 ##### Type: datetime-range
-![Datetime Image](./dist/assets/images/datepicker-datetime-range.png)
+![Datetime range Image](./dist/assets/images/datepicker-datetime-range.png)
 
 ### Getting started
 #### Quick start
@@ -60,6 +60,7 @@ Javascript file
 | lang | String | 'en-US' | 'en-US'/'zh-CN'/'vi' | language of the datepicker |
 | rangeSeparator | String | '-' | -- | if type is 'date-range' or 'datetime-range', use rangeSeparator to separate the date |
 | defaultValue | String/Date | '' | -- | default date, if picker type is date-range or datetime-range, parameter's type must be String |
+| zIndex | Number | 2008 | -- | The CSS style z-index for the picker. |
 
 ### Methods
 > Common usage
@@ -124,14 +125,14 @@ $().on(eventName, function (e, arguments) {
 
 ##### pick.datepicker
 This event fires when date is changed.
-* params ( Type: Object )
+* event ( Type: Object )
   * newDate ( Type: String )
   * oldDate ( Type: String )
 
 ```
-$().on('pick.datepicker', function (e, params) {
-  console.log('newDate: ' + params.newDate);
-  console.log('oldDate: ' + params.oldDate);
+$().on('pick.datepicker', function (event) {
+  console.log('newDate: ' + event.newDate);
+  console.log('oldDate: ' + event.oldDate);
 });
 ```
 
@@ -163,18 +164,19 @@ $().datepicker({
 });
 ```
 ##### onChange
-This callback called when picker value is changed.
+A shortcut of the "pick.datepicker" event, this callback called when picker value is changed.
 
 ```
 $().datepicker({
-    onChange: function (newDate, oldDate) {
-      // todo
+    onChange: function (events) {
+      console.log('newDate: ' + event.newDate);
+      console.log('oldDate: ' + event.oldDate);
     }
 });
 ```
 
 ##### onShow
-This callback called when picker is show.
+A shortcut of the "show.datepicker" event, this callback called when picker is show.
 
 ```
 $().datepicker({
@@ -184,7 +186,7 @@ $().datepicker({
 });
 ```
 ##### onHide
-This callback called when picker is hide.
+A shortcut of the "hide.datepicker" event, this callback called when picker is hide.
 
 ```
 $().datepicker({
