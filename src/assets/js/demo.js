@@ -19,21 +19,28 @@
     var type = $a.data('role');
     var tpl;
     switch (type) {
+      case 'date':
+        compileData.format = 'yyyy-MM-dd';
+        compileData.defaultValue = '2017-01-18';
+        break;
       case 'datetime':
         compileData.title = 'Datetime';
         compileData.description = 'Basic date picker measured by "datetime".';
         compileData.format = 'MM/dd/yyyy HH:mm:ss';
         compileData.align = 'right';
+        compileData.defaultValue = '02/26/2017 13:18:16';
         break;
       case 'year':
         compileData.title = 'Year';
         compileData.description = 'Basic date picker measured by "year".';
         compileData.format = 'yyyy';
+        compileData.defaultValue = '2016';
         break;
       case 'month':
         compileData.title = 'Month';
         compileData.description = 'Basic date picker measured by "month".';
         compileData.format = 'MM/yyyy';
+        compileData.defaultValue = '01/2017';
         break;
       case 'date-range':
         compileData.title = 'Range date';
@@ -44,6 +51,7 @@
         compileData.description = 'Basic date picker measured by "range datetime".';
         compileData.format = 'dd/MM/yyyy-HH:mm:ss';
         compileData.align = 'center';
+        compileData.defaultValue = '30/12/2016-18:42:38 - 03/02/2017-08:29:16';
         break;
       default:
         break;
@@ -59,10 +67,11 @@
       align: compileData.align !== '' ? compileData.align : 'left',
       startDate: new Date(2016, 11, 16),
       endDate: new Date(2017, 2, 15),
-      onChange: function (newValue) {
-        $('.callback-content[data-role=change]').text(newValue);
-        $('.events-content[data-role=pick]').text(newValue);
-        $('.gmi-datepicker-button--input').val(newValue);
+      defaultValue: compileData.defaultValue,
+      onChange: function (event) {
+        $('.callback-content[data-role=change]').text(event.newDate);
+        $('.events-content[data-role=pick]').text(event.newDate);
+        $('.gmi-datepicker-button--input').val(event.newDate);
       }
     });
 
@@ -123,6 +132,9 @@
           break;
         case 'clear':
           $datepicker.datepicker('clear');
+          break;
+        case 'destroy':
+          $datepicker.datepicker('destroy');
           break;
         default:
           break;

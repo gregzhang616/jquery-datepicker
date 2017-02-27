@@ -405,7 +405,8 @@
         datepicker.$pickerPanel = $(dateDom).appendTo($body).css({
           position: 'absolute',
           zIndex: parseInt(zIndex, 10),
-          transformOrigin: originX + ' 0'
+          transformOrigin: originX + ' 0',
+          msTransformOrigin: originX + ' 0'
         });
         // set picker panel position
         core._setDatePanelPosition();
@@ -420,6 +421,11 @@
             zIndex: TIME_PANEL_Z_INDEX
           });
           datepicker.$timePanel = $timePanel;
+        }
+
+        // bind EVENT_PICK for $el
+        if ($.isFunction(datepicker.onChange)) {
+          $el.on('pick.datepicker', datepicker.onChange);
         }
 
         // set default date
@@ -464,6 +470,14 @@
           .on('click.datepicker', core._elClickHandler)
           .on('change.datepicker', core._elChangeHandler)
           .on('keyup.datepicker', core._elKeyUpHandler);
+
+        if ($.isFunction(datepicker.onShow)) {
+          $el.on('show.datepicker', datepicker.onShow);
+        }
+
+        if ($.isFunction(datepicker.onHide)) {
+          $el.on('show.datepicker', datepicker.onHide);
+        }
 
         // cancel bubble for $pickerPanel
         datepicker.$pickerPanel.on('click.datepicker', function (e) {
@@ -911,6 +925,9 @@
         $el.off('click.datepicker', core._elClickHandler);
         $el.off('change.datepicker', core._elChangeHandler);
         $el.off('keyup.datepicker', core._elKeyUpHandler);
+        $el.off('pick.datepicker', datepicker.onChange);
+        $el.off('show.datepicker', datepicker.onShow);
+        $el.off('hide.datepicker', datepicker.onHide);
       },
       _generateDateDOM: function () {
         var type = datepicker.type;
@@ -1474,12 +1491,8 @@
                 }
                 if (date && date !== '') {
                   if (maxDate.getTime() >= minDate.getTime()) {
-                    // Callback onChange called
-                    if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-                      datepicker.onChange.call(datepicker, date, datepicker.value);
-                    }
-                    // Events change triggered
-                    $el.trigger('pick.datepicker', {newDate: date, oldDate: datepicker.value});
+                    // EVENT_PICK triggered
+                    core._trigger('pick.datepicker', {newDate: date, oldDate: datepicker.value});
                     datepicker.value = date;
                     datepicker.minDate = minDate;
                     datepicker.maxDate = maxDate;
@@ -1510,12 +1523,8 @@
               var newDate = $.parseDate(date, format);
               var newDateTime = newDate.getTime();
               if (oldDateTime !== newDateTime) {
-                // Callback onChange called
-                if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-                  datepicker.onChange.call(datepicker, date, $.formatDate(datepicker.date, format));
-                }
-                // Events change triggered
-                $el.trigger('pick.datepicker', {newDate: date, oldDate: $.formatDate(datepicker.date, format)});
+                // EVENT_PICK triggered
+                core._trigger('pick.datepicker', {newDate: date, oldDate: $.formatDate(datepicker.date, format)});
                 datepicker.value = date;
                 datepicker.date = newDate;
                 datepicker.yearLabel = newDate.getFullYear();
@@ -1535,12 +1544,8 @@
               var oldMonthTime = datepicker.date.getTime();
               var newMonthTime = new Date($.parseDate(newMonth, format).getFullYear(), $.parseDate(newMonth, format).getMonth(), 1).getTime();
               if (newMonthTime !== oldMonthTime) {
-                // Callback onChange called
-                if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-                  datepicker.onChange.call(datepicker, newMonth, oldMonth);
-                }
-                // Events change triggered
-                $el.trigger('pick.datepicker', {newDate: newMonth, oldDate: oldMonth});
+                // EVENT_PICK triggered
+                core._trigger('pick.datepicker', {newDate: newMonth, oldDate: oldMonth});
                 if ($.parseDate(newMonth, format).getFullYear() !== datepicker.date.getFullYear()) {
                   datepicker.$pickerPanel.find('.gmi-date-picker__header__label--year')
                     .text($.parseDate(newMonth, format).getFullYear() + ' '+ datepicker.yearSuffix +'');
@@ -1561,12 +1566,8 @@
               var newYear = Number(date);
               var newStartYear = Math.floor(newYear / 10) * 10;
               if (oldYear !== newYear) {
-                // Callback onChange called
-                if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-                  datepicker.onChange.call(datepicker, date, oldYear);
-                }
-                // Events change triggered
-                $el.trigger('pick.datepicker', {newDate: date, oldDate: oldYear});
+                // EVENT_PICK triggered
+                core._trigger('pick.datepicker', {newDate: date, oldDate: oldYear});
                 datepicker.value = date;
                 datepicker.date = new Date(newYear, 0, 1);
                 datepicker.yearLabel = newYear;
@@ -1710,11 +1711,7 @@
           var oldValue = datepicker.date.getTime();
           var elValue = new Date(year, 0, 1).getTime();
           if (elValue !== oldValue) {
-            if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-              datepicker.onChange.call(datepicker,
-                $.formatDate(new Date(year, 0, 1), datepicker.format),
-                $.formatDate(datepicker.date, datepicker.format));
-            }
+            core._trigger('pick.datepicker', {newDate: $.formatDate(new Date(year, 0, 1), datepicker.format), oldDate: $.formatDate(datepicker.date, datepicker.format)});
             datepicker.date = new Date(year, 0, 1);
             datepicker.value = year;
             datepicker.yearLabel = year;
@@ -1740,11 +1737,7 @@
           var oldValue = datepicker.date.getTime();
           var elValue = new Date(year, month, 1).getTime();
           if (elValue !== oldValue) {
-            if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-              datepicker.onChange.call(datepicker,
-                $.formatDate(new Date(year, month, 1), datepicker.format),
-                $.formatDate(datepicker.date, datepicker.format));
-            }
+            core._trigger('pick.datepicker', {newDate: $.formatDate(new Date(year, month, 1), datepicker.format), oldDate: $.formatDate(datepicker.date, datepicker.format)});
             datepicker.date = new Date(year, month, 1);
           }
           datepicker.value = $.formatDate(new Date(year, month, 1), datepicker.format);
@@ -1885,10 +1878,8 @@
         $delegateTarget.find('.gmi-date-picker--input, .gmi-time-picker--input').val('');
         if ($determineLinkButton.length > 0) $determineLinkButton.addClass('disabled');
         if ('' !== datepicker.value) {
-          if (datepicker.onChange && $.isFunction(datepicker.onChange)) {
-            datepicker.onChange.call(datepicker, '', datepicker.value);
-          }
-          $el.trigger('pick.datepicker', {newDate: '', oldDate: datepicker.value});
+          // EVENT_PICK triggered
+          core._trigger('pick.datepicker', {newDate: '', oldDate: datepicker.value});
           $el.val('');
           datepicker.date = new Date();
           datepicker.value = '';
@@ -1916,8 +1907,7 @@
         datepicker.$pickerPanel.show();
         setTimeout(function () {
           datepicker.$pickerPanel.removeClass('picker-hide').addClass('picker-show');
-          $el.trigger('show.datepicker');
-          if (datepicker.onShow && $.isFunction(datepicker.onShow)) datepicker.onShow.call(datepicker);
+          core._trigger('show.datepicker');
         }, 0);
       },
       _hidePickerPanel: function () {
@@ -1928,8 +1918,7 @@
           datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
           setTimeout(function () {
             datepicker.$pickerPanel.hide();
-            $el.trigger('hide.datepicker');
-            if (datepicker.onHide && $.isFunction(datepicker.onHide)) datepicker.onHide.call(datepicker);
+            core._trigger('hide.datepicker');
           }, 100);
         } else {
           switch (currentView) {
@@ -1949,8 +1938,7 @@
           setTimeout(function () {
             datepicker.$pickerPanel.hide().find('.gmi-date-table').show()
               .siblings('table').hide();
-            $el.trigger('hide.datepicker');
-            if (datepicker.onHide && $.isFunction(datepicker.onHide)) datepicker.onHide.call(datepicker);
+            core._trigger('hide.datepicker');
             datepicker.currentView = 'dateView';
           }, 100);
         }
@@ -1971,6 +1959,11 @@
         if (keyCode === KEY_CODE_ENTER) {
           core._echoInputValue(elValue);
         }
+      },
+      _trigger: function (type, data) {
+        var evt = $.Event(type, data);
+        $el.trigger(evt);
+        return evt;
       }
     };
 
