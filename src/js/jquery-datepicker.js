@@ -1095,6 +1095,8 @@
             cell.start = datepicker.minDate && time === $.clearHours(datepicker.minDate);
             cell.end = datepicker.maxDate && time === $.clearHours(datepicker.maxDate);
             cell.disabled = false;
+            fmtDate = $.formatDate(new Date(time));
+            console.log(fmtDate);
             if (datepicker.startDate && isDate(datepicker.startDate) && time < $.clearHours(datepicker.startDate)) {
               cell.disabled = true;
             }
@@ -1481,8 +1483,8 @@
                 datepicker.date = date.split(' '+ datepicker.rangeSeparator +' ');
                 var minDate = $.parseDate(datepicker.date[0], format);
                 var maxDate = $.parseDate(datepicker.date[1], format);
-                var startDate = datepicker.startDate && isDate(datepicker.startDate) ? datepicker.startDate : null;
-                var endDate = datepicker.endDate && isDate(datepicker.endDate) ? datepicker.endDate : null;
+                var startDate = datepicker.startDate && isDate(datepicker.startDate) ? new Date($.clearHours(datepicker.startDate)) : null;
+                var endDate = datepicker.endDate && isDate(datepicker.endDate) ? new Date($.clearHours(datepicker.endDate)) : null;
                 if (startDate && (minDate.getTime() < startDate.getTime() || maxDate.getTime() < startDate.getTime())) {
                   date = '';
                 }
@@ -2032,13 +2034,13 @@
   $.fn.datepicker.lang = DatePicker.LANG;
 
   $.isLeapYear = function (year) {
-    return 0 === year % 4 && ((year % 100 !== 0) || (year % 400 === 0));
+    return year % 4 === 0 && year % 100 !== 0 || year % 400 === 0;
   };
 
   $.getTotalDayCountOfMonth = function (year, month) {
     var lastDayArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       totalCount = lastDayArray[month];
-    if ($.isLeapYear(year) && month === 2) {
+    if ($.isLeapYear(year) && month === 1) {
       totalCount++;
     }
     return totalCount;

@@ -65,8 +65,8 @@
       type: type,
       format: compileData.format,
       align: compileData.align !== '' ? compileData.align : 'left',
-      startDate: new Date(2016, 11, 16),
-      endDate: new Date(2017, 2, 15),
+      startDate: $.getPrevYear(new Date()),
+      endDate: getPrevDate(),
       defaultValue: compileData.defaultValue,
       onChange: function (event) {
         $('.callback-content[data-role=change]').text(event.newDate);
@@ -141,5 +141,12 @@
       }
       e.stopPropagation();
     });
+  }
+
+  // Utils
+  function getPrevDate () {
+    var now = new Date();
+    var newDate = now.getTime() - (1000 * 3600 * 24);
+    return new Date(newDate);
   }
 })(jQuery);
