@@ -59,7 +59,7 @@ Javascript file
 | endDate | Date | null | -- | If the end date exists, the date after the end date is disabled |
 | lang | String | 'en-US' | 'en-US'/'zh-CN'/'vi' | language of the datepicker |
 | rangeSeparator | String | '-' | -- | if type is 'date-range' or 'datetime-range', use rangeSeparator to separate the date |
-| defaultValue | String/Date | '' | -- | default date, if picker type is date-range or datetime-range, parameter's type must be String |
+| defaultValue | String/Date | '' | -- | default date, if picker type is date-range or datetime-range, picker's type must be String |
 | zIndex | Number | 2008 | -- | The CSS style z-index for the picker. |
 
 ### Methods
