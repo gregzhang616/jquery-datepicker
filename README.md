@@ -41,7 +41,8 @@ Javascript file
 ```
 <script src="/assets/js/jquery.min.js"></script>
 <script src="/js/jquery.datepicker.min.js"></script>
-<script src="/i18n/datepicker.en-US.js"></script>
+// there is no need to import the next line of code when current language is 'en-US'
+<script src="/i18n/datepicker.zh-CN.js"></script>
 ```
 
 ### Attributes
