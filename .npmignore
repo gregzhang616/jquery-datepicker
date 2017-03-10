@@ -1,0 +1,11 @@
+# Files to ignore
+
+bower_components
+examples
+assets
+src/assets/js
+dist/assets/js
+/_*
+/.*
+bower.json
+gulpfile.js
