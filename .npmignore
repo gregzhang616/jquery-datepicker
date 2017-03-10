@@ -2,9 +2,10 @@
 
 bower_components
 examples
-assets
 src/assets/js
+src/assets/css
 dist/assets/js
+dist/assets/css
 /_*
 /.*
 bower.json

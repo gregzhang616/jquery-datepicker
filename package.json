@@ -16,6 +16,7 @@
   ],
   "author": "Greg Zhang",
   "license": "MIT",
+  "private": false,
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
