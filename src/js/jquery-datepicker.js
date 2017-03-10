@@ -325,7 +325,7 @@
   // Const DATE_PANEL_Z_INDEX
   var DATE_PANEL_Z_INDEX = 2008;
   // Const TIME_PANEL_Z_INDEX
-  var TIME_PANEL_Z_INDEX = 2010;
+  var TIME_PANEL_Z_INDEX = DATE_PANEL_Z_INDEX + 1;
   // Const TIME_PANEL_WIDTH
   var TIME_PANEL_WIDTH = 154;
   // Const KEY_CODE_ENTER
@@ -1095,8 +1095,6 @@
             cell.start = datepicker.minDate && time === $.clearHours(datepicker.minDate);
             cell.end = datepicker.maxDate && time === $.clearHours(datepicker.maxDate);
             cell.disabled = false;
-            fmtDate = $.formatDate(new Date(time));
-            console.log(fmtDate);
             if (datepicker.startDate && isDate(datepicker.startDate) && time < $.clearHours(datepicker.startDate)) {
               cell.disabled = true;
             }

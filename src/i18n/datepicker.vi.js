@@ -1,7 +1,7 @@
 /**
  * Created by Greg Zhang.
  */
-(function (factory) {
+(function (factory, jQuery) {
   if (typeof define === 'function' && define.amd) {
     define('datepicker.vi', ['jquery'], factory);
   } else if (typeof exports === 'object') {
@@ -29,4 +29,4 @@
     cancelTimeButton: 'hủy bỏ',
     clearButton: 'trong suốt'
   };
-});
+}, window.jQuery);

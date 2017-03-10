@@ -1,4 +1,4 @@
-(function (factory) {
+(function (factory, jQuery) {
   if (typeof define === 'function' && define.amd) {
     define('datepicker.en-US', ['jquery'], factory);
   } else if (typeof exports === 'object') {
@@ -26,4 +26,4 @@
     cancelTimeButton: 'Cancel',
     clearButton: 'Clear'
   };
-});
+}, window.jQuery);

@@ -1,4 +1,4 @@
-(function (factory) {
+(function (factory, jQuery) {
   if (typeof define === 'function' && define.amd) {
     define('datepicker.zh-CN', ['jquery'], factory);
   } else if (typeof exports === 'object') {
@@ -27,4 +27,4 @@
     cancelTimeButton: '取消',
     clearButton: '清空'
   };
-});
+}, window.jQuery);

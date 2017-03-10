@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A full-featured datepicker jquery plugin.",
   "homepage": "https://github.com/gregzhang616/jquery-datepicker.git",
-  "main": "dist/js/jquery.datepicker.js",
+  "main": "dist/js/jquery.datepicker.min.js",
   "keywords": [
     "date",
     "picker",
@@ -29,5 +29,9 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
     "pygmentize-bundled": "^2.3.0"
+  },
+  "dependencies": {
+    "fecha": "^2.3.0",
+    "jquery": "^1.12.4"
   }
 }
