@@ -2036,12 +2036,12 @@
       var fn;
       if (!data) {
         if (/destroy/.test(options)) {
-          return;
+          return false;
         }
-        return $(this).data('datepicker', (data = new DatePicker($(this), options)));
+        if (typeof options !== 'string') return $(this).data('datepicker', (data = new DatePicker($(this), options)));
       }
 
-      if (typeof options === 'string' && $.isFunction(fn = data[options])) {
+      if (data && typeof options === 'string' && $.isFunction(fn = data[options])) {
         result = fn.apply(data, args);
       }
     });
