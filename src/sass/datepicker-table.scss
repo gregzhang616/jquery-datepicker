@@ -1,5 +1,5 @@
 @mixin base-table-style {
-  font-size: 12px;
+  font-size: 12px!important;
   min-width: 224px;
   -webkit-user-select: none;
 }
@@ -15,7 +15,9 @@ table {
   th {
     padding: 5px;
     color: #8492a6;
+    font-size: 12px!important;
     font-weight: 400;
+    text-align: center;
   }
 
   td {
@@ -24,6 +26,9 @@ table {
     box-sizing: border-box;
     text-align: center;
     cursor: pointer;
+    vertical-align: middle;
+    font-size: 12px!important;
+    color: #475669;
 
     &.today {
       color: $primaryColor;
@@ -55,9 +60,9 @@ table {
     }
 
     &.in-range {
-      background-color: #c2dcef;
+      background-color: $inRangeColor;
       &:hover {
-        background-color: #c2dcef!important;
+        background-color: $inRangeColor!important;
       }
     }
 
@@ -77,6 +82,7 @@ table {
 
   td {
     padding: 22px 3px;
+    vertical-align: middle;
 
     .cell {
       height: 32px;
@@ -85,6 +91,7 @@ table {
       text-align: center;
       cursor: pointer;
       font-size: 12px!important;
+      color: #475669!important;
 
       &:not(.current):hover {
         background-color: #e5e9f2;
@@ -94,7 +101,7 @@ table {
     &.current {
       .cell {
         background-color: $primaryColor!important;
-        color: #fff;
+        color: #fff!important;
       }
     }
 
@@ -103,7 +110,7 @@ table {
        background-color: #f5f5f5;
        opacity: 1;
        cursor: not-allowed;
-       color: #ddd;
+       color: #ddd!important;
        &:hover {
          background-color: #f5f5f5!important;
        }

@@ -408,8 +408,6 @@
           transformOrigin: originX + ' 0',
           msTransformOrigin: originX + ' 0'
         });
-        // set picker panel position
-        core._setDatePanelPosition();
 
         // set position for time panel
         if (datepicker.$pickerPanel.find('.gmi-time-panel').length > 0) {
@@ -1834,17 +1832,22 @@
         }
       },
       _getDatePanelPosition: function () {
-        var offsetTop = $el[0].offsetTop;
-        var offsetLeft = $el[0].offsetLeft;
-        if ($el[0].offsetParent !== null) {
-          offsetTop += $el[0].offsetParent.offsetTop;
-          offsetLeft += $el[0].offsetParent.offsetLeft;
+        var viewHeight = document.body.clientHeight || document.documentElement.clientHeight;
+        var scrollTop = $(document.body || document.documentElement).scrollTop();
+        var elHeight = $el.outerHeight();
+        var panelHeight = datepicker.$pickerPanel.outerHeight();
+        var top = $el.offset().top;
+        var left = $el.offset().left;
+
+        if ((top - scrollTop > panelHeight) && (top - scrollTop + elHeight + panelHeight > viewHeight)) {
+          top -= panelHeight + Number(datepicker.$pickerPanel.css('margin-top').replace(/px/, '')) * 2;
+        } else {
+          top += elHeight;
         }
-        return {top: offsetTop, left: offsetLeft};
+        return {top: top, left: left};
       },
       _setDatePanelPosition: function () {
         var elWidth = $el.outerWidth();
-        var elHeight = $el.outerHeight();
         var position = core._getDatePanelPosition();
         var panelWidth;
         var left;
@@ -1864,7 +1867,7 @@
               break;
           }
           datepicker.$pickerPanel.css({
-            top: position.top + elHeight + 'px',
+            top: position.top + 'px',
             left: left + 'px'
           });
         }
@@ -1905,6 +1908,8 @@
       _showPickerPanel: function () {
         if (!datepicker.$pickerPanel.is(':hidden')) return;
         datepicker.$pickerPanel.show();
+        // set picker panel position
+        core._setDatePanelPosition();
         setTimeout(function () {
           datepicker.$pickerPanel.removeClass('picker-hide').addClass('picker-show');
           core._trigger('show.datepicker');

@@ -1,4 +1,5 @@
 $primaryColor: #038cd6;
+$inRangeColor: #c2dcef;
 $defaultColor: #8391a5;
 
 .gmi-date-picker {
@@ -15,6 +16,8 @@ $defaultColor: #8391a5;
     font-weight: 500;
     float: right;
     cursor: pointer;
+    font-size: 16px!important;
+    color: #475669!important;
 
     &:hover {
       color: $primaryColor;
@@ -56,9 +59,16 @@ $defaultColor: #8391a5;
   }
 
   &__body__header {
-    height: 22px;
     line-height: 22px;
     padding: 12px 20px 5px;
+
+    a[class^=gmi-date-picker__header__label--]{
+      color: #475669 !important;
+
+      &:hover {
+        color: $primaryColor!important;
+      }
+    }
   }
 
   .gmi-year-picker__header, .gmi-month-picker__header {
