@@ -5,8 +5,6 @@ $defaultColor: #8391a5;
 .gmi-date-picker {
   width: 254px;
   transition: all ease-in-out 0.2s;
-  opacity: 0;
-  transform: scale(0, 0);
 
   @at-root &.has-time {
     width: 324px;
@@ -169,11 +167,41 @@ $defaultColor: #8391a5;
 @import "timepicker";
 
 .picker-show {
-  opacity: 1;
-  transform: scale(1, 1);
+  animation: showPanel 0.2s ease-in-out;
+  -webkit-animation: showPanel 0.2s ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .picker-hide {
-  opacity: 0;
-  transform: scale(0, 0);
+  animation: hidePanel 0.2s ease-in-out;
+  -webkit-animation: hidePanel 0.2s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes showPanel {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+  }
+}
+
+@-webkit-keyframes hidePanel {
+  0% {
+    opacity: 1;
+    transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+  }
 }

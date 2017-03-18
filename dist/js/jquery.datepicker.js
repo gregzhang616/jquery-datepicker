@@ -330,6 +330,11 @@
   var TIME_PANEL_WIDTH = 154;
   // Const KEY_CODE_ENTER
   var KEY_CODE_ENTER = 13;
+  // Const IE_MODE
+  var inBrowser = typeof window !== 'undefined';
+  var UA = inBrowser && window.navigator.userAgent.toLowerCase();
+  var isIE = UA && /msie|trident/.test(UA);
+  var IE_MODE = document.documentMode;
 
   var DatePicker = function ($el, options) {
     var datepicker = this;
@@ -404,10 +409,12 @@
         // append picker panel into the dom tree
         datepicker.$pickerPanel = $(dateDom).appendTo($body).css({
           position: 'absolute',
-          zIndex: parseInt(zIndex, 10),
-          transformOrigin: originX + ' 0',
-          msTransformOrigin: originX + ' 0'
+          zIndex: parseInt(zIndex, 10)
         });
+
+        if (!isIE  || (isIE && IE_MODE > 9)) {
+          datepicker.$pickerPanel.css({transformOrigin: originX + ' 0', msTransformOrigin: originX + ' 0'});
+        }
 
         // set position for time panel
         if (datepicker.$pickerPanel.find('.gmi-time-panel').length > 0) {
@@ -1910,21 +1917,29 @@
         datepicker.$pickerPanel.show();
         // set picker panel position
         core._setDatePanelPosition();
-        setTimeout(function () {
-          datepicker.$pickerPanel.removeClass('picker-hide').addClass('picker-show');
+
+        animation(datepicker.$pickerPanel, 'picker-show', function () {
           core._trigger('show.datepicker');
-        }, 0);
+        });
+        // datepicker.$pickerPanel.removeClass('picker-hide').addClass('picker-show');
+        // setTimeout(function () {
+        //
+        // }, 0);
       },
       _hidePickerPanel: function () {
         var type = datepicker.type;
         var currentView = datepicker.currentView;
         if (datepicker.$pickerPanel.is(':hidden')) return;
         if (type === 'date-range' || type === 'datetime-range' || type === 'month' || type === 'year') {
-          datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
-          setTimeout(function () {
+          // datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
+          // setTimeout(function () {
+          //   datepicker.$pickerPanel.hide();
+          //   core._trigger('hide.datepicker');
+          // }, 100);
+          animation(datepicker.$pickerPanel, 'picker-hide', function () {
             datepicker.$pickerPanel.hide();
             core._trigger('hide.datepicker');
-          }, 100);
+          });
         } else {
           switch (currentView) {
             case 'yearView':
@@ -1939,13 +1954,18 @@
             default:
               break;
           }
-          datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
-          setTimeout(function () {
+          // datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
+          // setTimeout(function () {
+          //   datepicker.$pickerPanel.hide().find('.gmi-date-table').show()
+          //     .siblings('table').hide();
+          //   core._trigger('hide.datepicker');
+          //   datepicker.currentView = 'dateView';
+          // }, 100);
+          animation(datepicker.$pickerPanel, 'picker-hide', function () {
             datepicker.$pickerPanel.hide().find('.gmi-date-table').show()
-              .siblings('table').hide();
+                .siblings('table').hide();
             core._trigger('hide.datepicker');
-            datepicker.currentView = 'dateView';
-          }, 100);
+          });
         }
       },
       _elFocusHandler: function () {
@@ -2209,5 +2229,16 @@
   // isDate Method
   function isDate (date) {
     return typeof date === 'object' && date instanceof Date;
+  }
+
+  function animation ($target, classes, fn) {
+    $target.removeClass(classes).addClass(classes).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass(classes);
+      fn.apply($target, toArray(arguments));
+    });
+    if (isIE && IE_MODE <= 9) {
+      $(this).removeClass(classes);
+      fn.apply($target, toArray(arguments));
+    }
   }
 }, window.jQuery, window.fecha));

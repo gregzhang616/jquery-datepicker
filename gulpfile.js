@@ -63,7 +63,7 @@ gulp.task('process-component-sass', function () {
   return gulp.src(componentSassList)
     .pipe($dev().sass())
     .pipe($dev().autoprefixer({
-      browsers: ["last 2 versions", "Firefox >= 20"]
+      browsers: ["last 10 versions"]
     }))
     .pipe($dev().concat('jquery.datepicker.css'))
     .pipe(gulp.dest(distBasePath + 'css'))

@@ -1,8 +1,7 @@
 .gmi-date-picker {
   width: 254px;
-  transition: all ease-in-out 0.2s;
-  opacity: 0;
-  transform: scale(0, 0); }
+  -webkit-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s; }
   .gmi-date-picker.has-time {
     width: 324px; }
   .gmi-date-picker__header__icon-btn {
@@ -23,7 +22,8 @@
   background-color: #fff;
   border: 1px solid #d3dce6;
   border-radius: 2px;
-  box-shadow: 0 2px 5px #ccc;
+  -webkit-box-shadow: 0 2px 5px #ccc;
+          box-shadow: 0 2px 5px #ccc;
   margin: 5px 0;
   z-index: 2008; }
   .gmi-picker-panel a {
@@ -53,8 +53,8 @@
       width: 50%;
       float: left;
       padding: 0 5px;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box; }
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box; }
       .gmi-picker-panel__body__header--time__wrapper .gmi-input {
         width: 100%;
         display: inline-block; }
@@ -65,14 +65,15 @@
           -moz-appearance: none;
           border-radius: 2px;
           border: 1px solid #bfcbd9;
-          -moz-box-sizing: border-box;
-               box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
           color: #1f2d3d;
           display: block;
           line-height: 1;
           outline: none;
           padding: 3px 10px;
           font-size: 13px;
+          -webkit-transition: border-color 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
           transition: border-color 0.4s cubic-bezier(0.645, 0.045, 0.355, 1); }
           .gmi-picker-panel__body__header--time__wrapper .gmi-input__inner:hover {
             border: 1px solid #038cd6; }
@@ -100,8 +101,8 @@
     .gmi-picker-panel .gmi-date-table td {
       width: 32px;
       height: 32px;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       text-align: center;
       cursor: pointer;
       vertical-align: middle;
@@ -180,9 +181,8 @@
 
 .gmi-date-range-picker {
   width: 520px;
-  transition: all ease-in-out 0.2s;
-  opacity: 0;
-  transform: scale(0, 0); }
+  -webkit-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s; }
   .gmi-date-range-picker.has-time {
     width: 660px; }
   .gmi-date-range-picker__body {
@@ -195,16 +195,16 @@
       padding-bottom: 5px; }
     .gmi-date-range-picker__body .gmi-picker-panel__body__main {
       width: 50%;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       margin: 0;
       padding: 15px; }
   .gmi-date-range-picker__header--time__wrapper .gmi-input {
     float: left;
     width: 50%;
     padding: 0 5px;
-    -moz-box-sizing: border-box;
-         box-sizing: border-box; }
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
   .gmi-date-range-picker__header__icon-btn {
     color: #97a8be !important;
     position: absolute;
@@ -233,9 +233,12 @@
   color: #475669;
   background-color: #fff;
   border: 1px solid #d1dbe5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   border-radius: 2px;
-  transform-origin: center top 0;
+  -webkit-transform-origin: center top 0;
+      -ms-transform-origin: center top 0;
+          transform-origin: center top 0;
   z-index: 2011;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -253,14 +256,16 @@
       color: #fff;
       position: absolute;
       font-size: 14px;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       line-height: 16px;
       background-color: #039cef;
       height: 32px;
       left: 0;
       right: 0;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       padding-top: 6px;
       text-align: left; }
     .gmi-time-panel__body:after {
@@ -269,14 +274,16 @@
       color: #fff;
       position: absolute;
       font-size: 14px;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       line-height: 16px;
       background-color: #039cef;
       height: 32px;
       left: 66.66667%;
       right: 0;
-      -moz-box-sizing: border-box;
-           box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       padding-top: 6px;
       text-align: left; }
     .gmi-time-panel__body__item {
@@ -314,9 +321,37 @@
             cursor: not-allowed; }
 
 .picker-show {
-  opacity: 1;
-  transform: scale(1, 1); }
+  animation: showPanel 0.2s ease-in-out;
+  -webkit-animation: showPanel 0.2s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
 
 .picker-hide {
-  opacity: 0;
-  transform: scale(0, 0); }
+  animation: hidePanel 0.2s ease-in-out;
+  -webkit-animation: hidePanel 0.2s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards; }
+
+@-webkit-keyframes showPanel {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+    -ms-transform: scale(0, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -ms-transform: scale(1, 1); } }
+
+@-webkit-keyframes hidePanel {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -ms-transform: scale(1, 1); }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+    -ms-transform: scale(0, 0); } }
