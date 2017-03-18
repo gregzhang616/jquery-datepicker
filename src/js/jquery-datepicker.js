@@ -2072,7 +2072,6 @@
     });
     return typeof result === 'undefined' ? $self : result;
   };
-
   $.fn.datepicker.Constructor = DatePicker;
   $.fn.datepicker.lang = DatePicker.LANG;
 
