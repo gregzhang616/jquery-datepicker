@@ -1921,21 +1921,12 @@
         animation(datepicker.$pickerPanel, 'picker-show', function () {
           core._trigger('show.datepicker');
         });
-        // datepicker.$pickerPanel.removeClass('picker-hide').addClass('picker-show');
-        // setTimeout(function () {
-        //
-        // }, 0);
       },
       _hidePickerPanel: function () {
         var type = datepicker.type;
         var currentView = datepicker.currentView;
         if (datepicker.$pickerPanel.is(':hidden')) return;
         if (type === 'date-range' || type === 'datetime-range' || type === 'month' || type === 'year') {
-          // datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
-          // setTimeout(function () {
-          //   datepicker.$pickerPanel.hide();
-          //   core._trigger('hide.datepicker');
-          // }, 100);
           animation(datepicker.$pickerPanel, 'picker-hide', function () {
             datepicker.$pickerPanel.hide();
             core._trigger('hide.datepicker');
@@ -1954,13 +1945,6 @@
             default:
               break;
           }
-          // datepicker.$pickerPanel.addClass('picker-hide').removeClass('picker-show');
-          // setTimeout(function () {
-          //   datepicker.$pickerPanel.hide().find('.gmi-date-table').show()
-          //     .siblings('table').hide();
-          //   core._trigger('hide.datepicker');
-          //   datepicker.currentView = 'dateView';
-          // }, 100);
           animation(datepicker.$pickerPanel, 'picker-hide', function () {
             datepicker.$pickerPanel.hide().find('.gmi-date-table').show()
                 .siblings('table').hide();
@@ -1992,7 +1976,7 @@
       }
     };
 
-    datepicker.version = '1.0.0';
+    datepicker.version = '1.0.6';
 
     datepicker.setDate = function (date) {
       core._setDate(date);
@@ -2072,7 +2056,7 @@
     });
     return typeof result === 'undefined' ? $self : result;
   };
-  $.fn.datepicker.Constructor = DatePicker;
+  $.fn.datepicker.constructor = DatePicker;
   $.fn.datepicker.lang = DatePicker.LANG;
 
   $.isLeapYear = function (year) {
