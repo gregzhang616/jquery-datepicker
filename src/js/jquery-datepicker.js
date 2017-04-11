@@ -330,6 +330,12 @@
   var TIME_PANEL_WIDTH = 154;
   // Const KEY_CODE_ENTER
   var KEY_CODE_ENTER = 13;
+  // Const CLASS_PLACEMENT_LEFT_BOTTOM
+  var CLASS_PLACEMENT_LEFT_BOTTOM = 'placement-left-bottom';
+  // Const CLASS_PLACEMENT_CENTER_BOTTOM
+  var CLASS_PLACEMENT_CENTER_BOTTOM = 'placement-center-bottom';
+  // Const CLASS_PLACEMENT_RIGHT_BOTTOM
+  var CLASS_PLACEMENT_RIGHT_BOTTOM = 'placement-right-bottom';
   // Const IE_MODE
   var inBrowser = typeof window !== 'undefined';
   var UA = inBrowser && window.navigator.userAgent.toLowerCase();
@@ -465,8 +471,10 @@
           core._hidePickerPanel();
         });
 
-        // when window resizing that the panel will change its position
+        // when window resizing or scrolling that the panel will change its position
         $(window).on('resize.datepicker', function () {
+          core._setDatePanelPosition();
+        }).on('scroll.datepicker', function () {
           core._setDatePanelPosition();
         });
 
@@ -1839,17 +1847,20 @@
         }
       },
       _getDatePanelPosition: function () {
-        var viewHeight = document.body.clientHeight || document.documentElement.clientHeight;
-        var scrollTop = $(document.body || document.documentElement).scrollTop();
+        var viewHeight = $(window).height();
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
         var elHeight = $el.outerHeight();
         var panelHeight = datepicker.$pickerPanel.outerHeight();
         var top = $el.offset().top;
         var left = $el.offset().left;
+        var classOriginBottomX = datepicker.align === 'left' ? CLASS_PLACEMENT_LEFT_BOTTOM : datepicker.align === 'center' ? CLASS_PLACEMENT_CENTER_BOTTOM : CLASS_PLACEMENT_RIGHT_BOTTOM;
 
         if ((top - scrollTop > panelHeight) && (top - scrollTop + elHeight + panelHeight > viewHeight)) {
           top -= panelHeight + Number(datepicker.$pickerPanel.css('margin-top').replace(/px/, '')) * 2;
+          datepicker.$pickerPanel.addClass(classOriginBottomX);
         } else {
           top += elHeight;
+          datepicker.$pickerPanel.removeClass(classOriginBottomX);
         }
         return {top: top, left: left};
       },
@@ -2220,7 +2231,7 @@
       fn.apply($target, toArray(arguments));
     });
     if (isIE && IE_MODE <= 9) {
-      $(this).removeClass(classes);
+      $target.removeClass(classes);
       fn.apply($target, toArray(arguments));
     }
   }

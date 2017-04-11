@@ -178,6 +178,18 @@
       .gmi-picker-panel__footer .gmi-picker-panel__link-btn.disabled {
         color: #ccc;
         cursor: not-allowed; }
+  .gmi-picker-panel.placement-left-bottom {
+    -ms-transform-origin: 0 bottom !important;
+    -webkit-transform-origin: 0 bottom !important;
+            transform-origin: 0 bottom !important; }
+  .gmi-picker-panel.placement-center-bottom {
+    -ms-transform-origin: 50% bottom !important;
+    -webkit-transform-origin: 50% bottom !important;
+            transform-origin: 50% bottom !important; }
+  .gmi-picker-panel.placement-right-bottom {
+    -ms-transform-origin: 100% bottom !important;
+    -webkit-transform-origin: 100% bottom !important;
+            transform-origin: 100% bottom !important; }
 
 .gmi-date-range-picker {
   width: 520px;

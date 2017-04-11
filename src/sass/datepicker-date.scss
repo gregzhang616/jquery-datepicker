@@ -158,6 +158,21 @@ $defaultColor: #8391a5;
       }
     }
   }
+
+  &.placement-left-bottom {
+    -ms-transform-origin: 0 bottom!important;
+    transform-origin: 0 bottom!important;
+  }
+
+  &.placement-center-bottom {
+    -ms-transform-origin: 50% bottom!important;
+    transform-origin: 50% bottom!important;
+  }
+
+  &.placement-right-bottom {
+    -ms-transform-origin: 100% bottom!important;
+    transform-origin: 100% bottom!important;
+  }
 }
 
 // 导入双日历样式
