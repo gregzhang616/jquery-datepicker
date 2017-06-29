@@ -229,7 +229,7 @@ $().datepicker({
 * Internet Explorer 8+
 
 ### Author
-Greg Zhang from Asiainfo (gregzhang616@gmail.com).
+Greg Zhang from Baidu (gregzhang616@gmail.com).
 
 ### Remarks
 Thanks for the eleme UED team to provide such a good UI design.
