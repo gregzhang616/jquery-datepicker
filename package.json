@@ -34,5 +34,6 @@
   "dependencies": {
     "fecha": "^2.3.0",
     "jquery": "^1.12.4"
-  }
+  },
+  "repository": "https://github.com/gregzhang616/jquery-datepicker.git"
 }
