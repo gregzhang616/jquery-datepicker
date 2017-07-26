@@ -356,6 +356,7 @@
         endDate: null,
         lang: 'en-US',
         rangeSeparator: '-',
+        weekStart: 0,
         defaultValue: '',
         zIndex: DATE_PANEL_Z_INDEX,
         onChange: null,
@@ -1087,7 +1088,7 @@
         var dateCountOfLastMonth = $.getTotalDayCountOfMonth(date.getFullYear(), (date.getMonth() === 0 ? 11 : date.getMonth() - 1));
 
         day = (day === 0) ? 7 : day;
-        var offset = 0;
+        var offset = -1 * datepicker.weekStart;
         var rows = tableRows;
         var count = 1;
         var firstDayPosition;
@@ -1156,6 +1157,7 @@
       },
       _getWeekDayRows: function () {
         var weekDayRows = datepicker.daysMin;
+        if (datepicker.weekStart) weekDayRows = weekDayRows.slice(datepicker.weekStart).concat(weekDayRows.slice(0,datepicker.weekStart));
         return weekDayRows;
       },
       _getYearRows: function (year) {
