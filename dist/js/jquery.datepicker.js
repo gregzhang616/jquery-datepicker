@@ -1992,7 +1992,7 @@
       }
     };
 
-    datepicker.version = '1.0.6';
+    datepicker.version = '1.0.7';
 
     datepicker.setDate = function (date) {
       core._setDate(date);
