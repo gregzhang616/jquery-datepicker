@@ -11,7 +11,7 @@
     factory(jQuery);
   }
 
-}(function ($) {
+})(function ($) {
 
   'use strict';
 
@@ -2074,7 +2074,8 @@
     });
     return typeof result === 'undefined' ? $self : result;
   };
-  $.fn.datepicker.constructor = DatePicker;
+
+  $.fn.datepicker.Constructor = DatePicker;
   $.fn.datepicker.lang = DatePicker.LANG;
 
   $.isLeapYear = function (year) {
@@ -2242,4 +2243,4 @@
       fn.apply($target, toArray(arguments));
     }
   }
-}));
+});
