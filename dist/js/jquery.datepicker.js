@@ -1,19 +1,21 @@
 /**
  * Created by Greg Zhang
  */
-;(function (factory, jQuery, fecha) {
+;(function (factory) {
 
   if (typeof define === 'function' && define.amd) {
-    define(['jquery', 'fecha'], factory);
+    define(['jquery'], factory);
   } else if (typeof exports === 'object') {
-    factory(require('jquery'), require('fecha'));
+    factory(require('jquery'));
   } else {
-    factory(jQuery, fecha);
+    factory(jQuery);
   }
 
 }(function ($, dateUtils) {
 
-  dateUtils = dateUtils ? dateUtils : (function () {
+  'use strict';
+
+  dateUtils = (function () {
       var fecha = {};
       var token = /d{1,4}|M{1,4}|yy(?:yy)?|S{1,3}|Do|ZZ|([HhMsDm])\1?|[aA]|"[^"]*"|'[^']*'/g;
       var twoDigits = /\d\d?/;
@@ -1992,7 +1994,7 @@
       }
     };
 
-    datepicker.version = '1.0.9';
+    datepicker.version = '1.1.0';
 
     datepicker.setDate = function (date) {
       core._setDate(date);
@@ -2240,4 +2242,4 @@
       fn.apply($target, toArray(arguments));
     }
   }
-}, global.jQuery, global.fecha));
+}));
