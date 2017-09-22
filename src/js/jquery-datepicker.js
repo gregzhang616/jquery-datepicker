@@ -6,7 +6,7 @@
   if (typeof define === 'function' && define.amd) {
     define(['jquery', 'fecha'], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'), require('fecha'));
+    factory(require('jquery'), require('fecha'));
   } else {
     factory(jQuery, fecha);
   }
@@ -1992,7 +1992,7 @@
       }
     };
 
-    datepicker.version = '1.0.7';
+    datepicker.version = '1.0.9';
 
     datepicker.setDate = function (date) {
       core._setDate(date);
@@ -2240,4 +2240,4 @@
       fn.apply($target, toArray(arguments));
     }
   }
-}, window.jQuery, window.fecha));
+}, global.jQuery, global.fecha));
