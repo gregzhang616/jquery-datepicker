@@ -56,6 +56,7 @@ Javascript file
 | format | String | 'yyyy-MM-dd' | year->yyyy, month->MM, day->dd, hour->HH, minute->mm, second->ss | format of the picker |
 | placeholder | String | 'Please pick a day' | -- | init input element's placeholder |
 | align | String | 'left' | 'left'/'center'/'right' | the pick panel's alignment |
+| weekStart | Number | 0 | -- | Start of the week |
 | startDate | Date | null | -- | If the start date exists, the date before the start date is disabled  |
 | endDate | Date | null | -- | If the end date exists, the date after the end date is disabled |
 | lang | String | 'en-US' | 'en-US'/'zh-CN'/'vi' | language of the datepicker |
