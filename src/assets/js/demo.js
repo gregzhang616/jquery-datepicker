@@ -65,7 +65,7 @@
       type: type,
       format: compileData.format,
       align: compileData.align !== '' ? compileData.align : 'left',
-      weekStart: 1,
+      weekStart: 2,
       startDate: $.getPrevYear(new Date()),
       endDate: getPrevDate(),
       defaultValue: compileData.defaultValue,
