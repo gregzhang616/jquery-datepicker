@@ -468,8 +468,11 @@
         if ($pickPanel && $pickPanel.length > 0) $pickPanel.remove();
       },
       _bindEvent: function () {
-        $(document).on('click.datepicker', function () {
-          core._hidePickerPanel();
+        $(document).on('click.datepicker', function (e) {
+          var $target = $(e.target);
+          if (!$target.is($el) && $el.has($target).length <= 0) {
+            core._hidePickerPanel();
+          }
         });
 
         // when window resizing or scrolling that the panel will change its position
