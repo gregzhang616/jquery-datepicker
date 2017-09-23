@@ -1,6 +1,6 @@
 {
   "name": "gemini-datepicker",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A full-featured datepicker jquery plugin.",
   "homepage": "https://github.com/gregzhang616/jquery-datepicker.git",
   "main": "dist/js/jquery.datepicker.min.js",
