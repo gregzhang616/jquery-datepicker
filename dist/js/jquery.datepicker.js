@@ -957,15 +957,15 @@
         var endYear = Math.floor(datepicker.date.getFullYear() / 10) * 10 + 9;
         var yearLabel = type === 'date' || type === 'month' || type === 'datetime' ? datepicker.date.getFullYear() + ' '+ datepicker.yearSuffix +'' : startYear + ' '+ datepicker.yearSuffix +'' + ' - ' + endYear + ' '+ datepicker.yearSuffix +'';
         var monthLabel = datepicker.monthsShort[datepicker.date.getMonth()];
-        var monthDom = type === 'date' || type === 'datetime' ? '<a href="javascript: void (0);" class="gmi-date-picker__header__label--month">'+ monthLabel +'</a>' : '';
+        var monthDom = type === 'date' || type === 'datetime' ? '<span class="gmi-date-picker__header__label--month">'+ monthLabel +'</span>' : '';
         var dateDomStr = '<div data-role="'+ type +'" class="gmi-picker-panel gmi-date-picker '+ hasTimeClass +'" style="display: none;">' +
           '<div class="gmi-picker-panel__body">'
           + datetimeHeaderStr +
           '<div class="gmi-picker-panel__body__header">' +
-          '<a href="javascript: void (0);" class="gmi-date-picker__header__label--year">'+ yearLabel +'</a>'
+          '<span class="gmi-date-picker__header__label--year">'+ yearLabel +'</span>'
           + monthDom +
-          '<em data-action="next" class="gmi-date-picker__header__icon-btn gmi-picker-panel__btn--next iconfont icon-arrow-down"></em>' +
-          '<em data-action="prev" class="gmi-date-picker__header__icon-btn gmi-picker-panel__btn--prev iconfont icon-arrow-up"></em>' +
+          '<em data-action="next" class="gmi-date-picker__header__icon-btn gmi-picker-panel__btn--next"></em>' +
+          '<em data-action="prev" class="gmi-date-picker__header__icon-btn gmi-picker-panel__btn--prev"></em>' +
           '</div>' +
           '<div class="gmi-picker-panel__body__main">'
           + core._getDateTable(datepicker.date) +
@@ -992,16 +992,16 @@
           '<div class="gmi-picker-panel__body__main f-lt">' +
           '<div class="gmi-date-range-picker__body__header">' +
           '<p>'+ firstDate.getFullYear() +' '+ datepicker.yearSuffix +' '+ datepicker.monthsShort[firstDate.getMonth()] +'</p>' +
-          '<em data-action="prev-year" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--prev gmi-date-range-picker__btn--prev-year iconfont icon-double-arrow-left"></em>' +
-          '<em data-action="prev-month" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--prev gmi-date-range-picker__btn--prev-month iconfont icon-left"></em>' +
+          '<em data-action="prev-year" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--prev gmi-date-range-picker__btn--prev-year"></em>' +
+          '<em data-action="prev-month" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--prev gmi-date-range-picker__btn--prev-month"></em>' +
           '</div>'
           + core._getDateTable(firstDate) +
           '</div>' +
           '<div class="gmi-picker-panel__body__main f-rt">' +
           '<div class="gmi-date-range-picker__body__header">' +
           '<p>'+ nextDate.getFullYear() +' '+ datepicker.yearSuffix +' '+ datepicker.monthsShort[nextDate.getMonth()] +'</p>' +
-          '<em data-action="next-year" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--next gmi-date-range-picker__btn--next-year iconfont icon-double-arrow-right"></em>' +
-          '<em data-action="next-month" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--next gmi-date-range-picker__btn--next-month iconfont icon-right"></em>' +
+          '<em data-action="next-year" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--next gmi-date-range-picker__btn--next-year"></em>' +
+          '<em data-action="next-month" class="gmi-date-range-picker__header__icon-btn gmi-date-range-picker__btn--next gmi-date-range-picker__btn--next-month"></em>' +
           '</div>'
           + core._getDateTable(nextDate) +
           '</div>' +
@@ -1266,7 +1266,7 @@
             }
             var disabledClass = isDisabled ? 'disabled' : '';
             var currentClass = year === yearCell && !isDisabled ? 'current' : '';
-            tableStr += '<td class="available '+ currentClass +' '+ disabledClass +'"><a class="cell">'+ yearCell +'</a></td>';
+            tableStr += '<td class="available '+ currentClass +' '+ disabledClass +'"><span class="cell">'+ yearCell +'</span></td>';
           }
           tableStr += '</tr>';
         }
@@ -1299,7 +1299,7 @@
             }
             var disabledClass = isDisabled ? 'disabled' : '';
             var currentClass = month === (i * 4 + j) && !isDisabled ? 'current' : '';
-            tableStr += '<td data-year="'+ datepicker.date.getFullYear() +'" data-month="'+ (i * 4 + j) +'" class="'+ currentClass +' '+ disabledClass +'"><a class="cell">'+ monthCell +'</a></td>';
+            tableStr += '<td data-year="'+ datepicker.date.getFullYear() +'" data-month="'+ (i * 4 + j) +'" class="'+ currentClass +' '+ disabledClass +'"><span class="cell">'+ monthCell +'</span></td>';
           }
           tableStr += '</tr>';
         }
@@ -1994,7 +1994,7 @@
       }
     };
 
-    datepicker.version = '1.1.0';
+    datepicker.version = '1.0.14';
 
     datepicker.setDate = function (date) {
       core._setDate(date);

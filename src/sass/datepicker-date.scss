@@ -11,10 +11,13 @@ $defaultColor: #8391a5;
   }
 
   &__header__icon-btn {
-    font-weight: 500;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin: 3px 0;
     float: right;
     cursor: pointer;
-    font-size: 16px!important;
     color: #475669!important;
 
     &:hover {
@@ -40,10 +43,11 @@ $defaultColor: #8391a5;
   margin: 5px 0;
   z-index: 2008;
 
-  a {
+  span {
     color: #475669;
     font-size: 14px;
     padding: 0 3px;
+    cursor: pointer;
 
     &:hover {
       color: $primaryColor;
@@ -60,7 +64,7 @@ $defaultColor: #8391a5;
     line-height: 22px;
     padding: 12px 20px 5px;
 
-    a[class^=gmi-date-picker__header__label--]{
+    span[class^=gmi-date-picker__header__label--]{
       color: #475669 !important;
 
       &:hover {
@@ -117,7 +121,14 @@ $defaultColor: #8391a5;
     }
   }
 
+  &__btn--prev {
+    background: url("/images/arrow-up.png",true) no-repeat center center;
+    background-size: 100% 100%;
+  }
+
   &__btn--next {
+    background: url("/images/arrow-down.png",true) no-repeat center center;
+    background-size: 100% 100%;
     margin-left: 15px;
   }
 

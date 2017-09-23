@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     gulpUglify = require('gulp-uglify'),
     markdown = require('gulp-markdown'),
     $dev = require('gulp-load-plugins'),
+    inline_base64 = require('gulp-inline-base64'),
     srcBasePath = 'src/',
     srcAssetsPath = srcBasePath + 'assets/',
     srcI18nPath = srcBasePath + 'i18n/',
@@ -47,21 +48,14 @@ gulp.task('copy-assets', function () {
     .pipe($dev().connect.reload());
 });
 
-gulp.task('process-fonts', function () {
-  return gulp.src(srcBasePath + 'fonts/*.{eot,svg,ttf,woff}')
-    .pipe(gulp.dest(distBasePath + 'fonts'));
-});
-
-
-gulp.task('process-fonts-css', function () {
-  return gulp.src(srcBasePath + 'fonts/*.css')
-    .pipe($dev().minifyCss())
-    .pipe(gulp.dest(distAssetsPath + 'css/'));
-});
-
 gulp.task('process-component-sass', function () {
   return gulp.src(componentSassList)
     .pipe($dev().sass())
+    .pipe(inline_base64({
+      baseDir: srcAssetsPath,
+      maxSize: 14,
+      debug: true
+    }))
     .pipe($dev().autoprefixer({
       browsers: ["last 10 versions"]
     }))
@@ -108,5 +102,5 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['copy-html', 'copy-assets', 'process-docs',
-  'process-component-sass', 'process-component-js', 'process-i18n-js', 'process-fonts', 'process-fonts-css',
+  'process-component-sass', 'process-component-js', 'process-i18n-js',
   'server', 'watch']);

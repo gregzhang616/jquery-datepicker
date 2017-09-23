@@ -35,12 +35,11 @@
   }
 
   &__header__icon-btn {
-    color: #97a8be!important;
     position: absolute;
     top: 0;
     cursor: pointer;
-    font-size: 14px!important;
-    font-weight: 600;
+    width: 16px;
+    height: 16px;
 
     &:hover {
       color: $primaryColor;
@@ -49,15 +48,24 @@
 
   &__btn--prev {
     left: 5px;
+    background: url("/images/double-arrow-left.png",true) no-repeat center center;
+    background-size: 100% 100%;
+
     &-month {
+      background: url("/images/left.png",true) no-repeat center center;
+      background-size: 100% 100%;
       left: 25px;
     }
   }
 
   &__btn--next {
+    background: url("/images/double-arrow-right.png",true) no-repeat center center;
+    background-size: 100% 100%;
     right: 5px;
 
     &-month {
+      background: url("/images/right.png",true) no-repeat center center;
+      background-size: 100% 100%;
       right: 25px;
     }
   }
