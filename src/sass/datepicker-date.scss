@@ -49,6 +49,10 @@ $defaultColor: #8391a5;
     padding: 0 3px;
     cursor: pointer;
 
+    &:first-child {
+      padding-left: 0;
+    }
+
     &:hover {
       color: $primaryColor;
       text-decoration: none;

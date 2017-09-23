@@ -34,6 +34,8 @@
     font-size: 14px;
     padding: 0 3px;
     cursor: pointer; }
+    .gmi-picker-panel span:first-child {
+      padding-left: 0; }
     .gmi-picker-panel span:hover {
       color: #038cd6;
       text-decoration: none; }
