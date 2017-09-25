@@ -45,6 +45,18 @@ Javascript file
 <script src="/i18n/datepicker.zh-CN.js"></script>
 ```
 
+##### CommonJs / NodeJs:
+Css file
+```
+require('gemini-datepicker/dist/css/jquery.datepicker.min.css');
+```
+
+Javascript file
+```
+require('gemini-datepicker');
+```
+
+
 ### Attributes
 >You may set datepicker options with $().datepicker(options), the options type is Object.
 
