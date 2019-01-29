@@ -2131,7 +2131,7 @@
       newMonth = month === 0 ? 11 : month - 1,
       newMonthDayCount = $.getTotalDayCountOfMonth(newYear, newMonth);
 
-    newDate.setMonth(newMonth);
+    newDate.setMonth(newMonth, 1);
     newDate.setFullYear(newYear);
 
     if (newMonthDayCount < date) {
@@ -2149,7 +2149,7 @@
       newMonth = month === 11 ? 0 : month + 1,
       newMonthDayCount = $.getTotalDayCountOfMonth(newYear, newMonth);
 
-    newDate.setMonth(newMonth);
+    newDate.setMonth(newMonth, 1);
     newDate.setFullYear(newYear);
 
     if (newMonthDayCount < date) {
@@ -2167,7 +2167,7 @@
       newMonth = month,
       newMonthDayCount = $.getTotalDayCountOfMonth(newYear, newMonth);
 
-    newDate.setMonth(newMonth);
+    newDate.setMonth(newMonth, 1);
     newDate.setFullYear(newYear);
 
     if (newMonthDayCount < date) {
@@ -2185,7 +2185,7 @@
       newMonth = month,
       newMonthDayCount = $.getTotalDayCountOfMonth(newYear, newMonth);
 
-    newDate.setMonth(newMonth);
+    newDate.setMonth(newMonth, 1);
     newDate.setFullYear(newYear);
 
     if (newMonthDayCount < date) {
